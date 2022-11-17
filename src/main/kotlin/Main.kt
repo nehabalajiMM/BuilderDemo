@@ -1,7 +1,15 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+import builders.CarBuilder
+import builders.CarManualBuilder
+import director.Director
+
+fun main(args: Array<String>) {
+    val director = Director()
+    val builder = CarBuilder()
+    director.constructSUV(builder)
+    val (carType) = builder.getResult()
+    println("Car built: $carType")
+    val manualBuilder = CarManualBuilder()
+    director.constructSUV(manualBuilder)
+    println("Car manual built: \n${manualBuilder.print()}")
 }
